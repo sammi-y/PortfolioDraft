@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Mi Yap - Game Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #ecf0f1;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem auto;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            color: #3498db;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-list li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item strong {
+            min-width: 100px;
+            color: #2c3e50;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .resume-download {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .resume-download:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sam Mi Yap</h1>
+        <p>Game Developer</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">自己紹介</a></li>
+            <li><a href="#projects">作品</a></li>
+            <li><a href="#skills">スキル</a></li>
+            <li><a href="#contact">連絡先</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>自己紹介</h2>
+            <div class="about-content">
+                <p>
+                    こんにちは。私はDirectXとUnityの開発経験を持つ、情熱的なゲーム開発の学生です。
+                    また、4ヶ国語を話せるため、多様なチームとのコミュニケーションが得意です。
+                    あらゆるジャンルのゲーム制作が好きで、新しい技術を探求することに熱心に取り組んでいます。
+                </p>
+                <p style="margin-top: 1rem;">
+                    私は大学で2年間工学の経験があり、物理学と数学の基礎知識を持っています。
+                    そのため、ゲーム開発において物理演算やシェーダーのコーディングに特に情熱を注いでいます。
+                    また、ホラーゲームやパズルゲームのジャンルが大好きで、プレイヤーに緊張感や挑戦を与えるゲーム体験の制作を楽しんでいます。
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>作品</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <!-- Replace with: <img src="project1.jpg" alt="Project 1" style="width:100%; height:100%; object-fit:cover;"> -->
+                        Project Image 1
+                    </div>
+                    <div class="project-content">
+                        <h3>Flying Cat</h3>
+                        <p class="project-tech">DirectX 11 | C++</p>
+                        <p>
+                            Angry Birdsをベースにした3DカジュアルゲームをDirectXとC++で制作しました。
+                            物理演算のコーディングに重点を置いて開発しました。
+                        </p>
+                        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                            <a href="https://youtube.com/video-link3" target="_blank" style="color: #3498db; text-decoration: none; font-weight: 600;">📹 動画を見る</a>
+                            <a href="FlyingCat.exe" download style="color: #27ae60; text-decoration: none; font-weight: 600;">💾 ダウンロード</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <!-- Replace with: <img src="project2.jpg" alt="Project 2" style="width:100%; height:100%; object-fit:cover;"> -->
+                        Project Image 2
+                    </div>
+                    <div class="project-content">
+                        <h3>2D物理エンジン</h3>
+                        <p class="project-tech">DirectX 12 | C++</p>
+                        <p>
+                            DirectXとC++で制作した2D物理エンジンです。
+                            剛体シミュレーション、衝突検出、衝突応答などの物理演算システムを一から実装しました。
+                        </p>
+                        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                            <a href="https://youtube.com/video-link2" target="_blank" style="color: #3498db; text-decoration: none; font-weight: 600;">📹 動画を見る</a>
+                            <a href="2DPhysicsEngine.exe" download style="color: #27ae60; text-decoration: none; font-weight: 600;">💾 ダウンロード</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <!-- Replace with: <img src="project3.jpg" alt="Project 3" style="width:100%; height:100%; object-fit:cover;"> -->
+                        Project Image 3
+                    </div>
+                    <div class="project-content">
+                        <h3>チーム制作（チーム名：鏡餅餅）</h3>
+                        <p class="project-tech">Unity | C#</p>
+                        <p>
+                            Unityで制作した学校を舞台にした3Dアクションホラーゲームです。
+                            C#でゲームプレイメカニクスとホラー演出を実装しました。
+                        </p>
+                        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                            <a href="https://youtube.com/video-link3" target="_blank" style="color: #3498db; text-decoration: none; font-weight: 600;">📹 動画を見る</a>
+                            <a href="GroupProject.exe" download style="color: #27ae60; text-decoration: none; font-weight: 600;">💾 ダウンロード</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>スキルと言語</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>ゲームエンジン</h3>
+                    <ul class="skill-list">
+                        <li>Unreal Engine</li>
+                        <li>Unity</li>
+                        <li>DirectX</li>
+                        <li>OpenGL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>プログラミング言語</h3>
+                    <ul class="skill-list">
+                        <li>C/C++</li>
+                        <li>C#</li>
+                        <li>Blueprint (Unreal)</li>
+                        <li>HLSL/Shaders</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ツール</h3>
+                    <ul class="skill-list">
+                        <li>Visual Studio</li>
+                        <li>Git</li>
+                        <li>3D グラフィックプログラミング</li>
+                        <li>ゲーム物理</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>連絡先</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:your.email@example.com">sammiyap01@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/sammiyap</a>
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub:</strong>
+                    <a href="https://github.com/yourusername" target="_blank">github.com/sammi-y</a>
+                </div>
+                <div class="contact-item">
+                    <strong>ポートフォリオ：</strong>
+                    <span>myportfolio.com</span>
+                </div>
+            </div>
+            <a href="myresume.pdf" class="resume-download" download>履歴書をダウンロード (PDF)</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sam Mi Yap. All rights reserved.</p>
+    </footer>
+</body>
+</html>
